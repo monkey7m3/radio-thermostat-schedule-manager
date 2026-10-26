@@ -1,12 +1,27 @@
-"""Tests for CT50 weekly program validation."""
+"""Tests for CT50 weekly program validation.
+
+Load the pure helper module directly so the unit tests do not require Home Assistant.
+"""
+
+import importlib.util
+from pathlib import Path
 
 import pytest
 
-from custom_components.radio_thermostat_schedule_manager.schedule import (
-    InvalidProgram,
-    normalize_program,
-    programs_equal,
+
+MODULE_PATH = (
+    Path(__file__).parents[1]
+    / "custom_components"
+    / "radio_thermostat_schedule_manager"
+    / "schedule.py"
 )
+SPEC = importlib.util.spec_from_file_location("schedule_under_test", MODULE_PATH)
+assert SPEC is not None and SPEC.loader is not None
+SCHEDULE = importlib.util.module_from_spec(SPEC)
+SPEC.loader.exec_module(SCHEDULE)
+InvalidProgram = SCHEDULE.InvalidProgram
+normalize_program = SCHEDULE.normalize_program
+programs_equal = SCHEDULE.programs_equal
 
 
 VALID_PROGRAM = {

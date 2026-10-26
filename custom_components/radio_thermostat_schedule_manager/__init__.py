@@ -125,7 +125,8 @@ async def async_setup_entry(
                             )
                         result[mode] = "verified"
                     except Exception:
-                        result[mode] = "failed"
+                        if result[mode] != "readback_mismatch":
+                            result[mode] = "failed"
                         raise
                 status_after = await api.get_status()
                 if status_after.get("tmode") != mode_before:

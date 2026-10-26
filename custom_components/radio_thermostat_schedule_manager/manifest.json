@@ -1,0 +1,11 @@
+{
+  "domain": "radio_thermostat_schedule_manager",
+  "name": "Radio Thermostat Schedule Manager",
+  "codeowners": [],
+  "config_flow": true,
+  "documentation": "https://github.com/monkey7m3/radio-thermostat-schedule-manager",
+  "iot_class": "local_polling",
+  "issue_tracker": "https://github.com/monkey7m3/radio-thermostat-schedule-manager/issues",
+  "requirements": [],
+  "version": "0.1.0"
+}

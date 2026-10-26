@@ -1,0 +1,20 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect to a Radio Thermostat",
+        "description": "Enter the hostname or IP address of your CT50 on the local network.",
+        "data": {
+          "host": "Hostname or IP address"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Could not connect to the thermostat. Check the host and network.",
+      "invalid_response": "The host responded, but did not return a recognizable thermostat status."
+    },
+    "abort": {
+      "already_configured": "This thermostat is already configured."
+    }
+  }
+}

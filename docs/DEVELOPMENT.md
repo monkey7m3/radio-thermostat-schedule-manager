@@ -4,7 +4,7 @@
 
 This branch establishes the integration packaging, UI configuration flow, CT50 API client, weekly schedule validation, and Home Assistant storage for four independent profiles.
 
-The schedule service implementation, clock monitoring/synchronization, entity model, and Lovelace editor are intentionally not considered complete yet. The clock setter endpoint and Hold side effects must be confirmed against the API guide and a real CT50 before enabling any automatic clock correction.
+Explicit save-profile and Home/Away activation services are now present. The clock monitoring/synchronization, entity model, and Lovelace editor are not implemented yet. The clock setter endpoint and Hold side effects must be confirmed against the API guide and a real CT50 before enabling any automatic clock correction. The activation service is an early implementation and still requires integration testing against a real thermostat before use.
 
 ## CT50 schedule format
 
@@ -22,6 +22,8 @@ The schedule service implementation, clock monitoring/synchronization, entity mo
 - Preserve current thermostat mode when switching profiles.
 - Clock correction must not run automatically while Hold is active until the exact behavior is proven.
 - Keep API operations serialized with a shared lock.
+- Use the `save_profile` service to persist a validated weekly program in Home Assistant only.
+- Use the `activate_profile` service to upload and verify both saved Home/Away programs. These services currently accept an optional `entry_id`; when omitted, the service handler uses the entry that registered the service.
 
 ## Testing checklist
 

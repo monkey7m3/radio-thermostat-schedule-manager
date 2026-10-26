@@ -1,0 +1,31 @@
+save_profile:
+  name: Save profile
+  description: Store a validated weekly schedule in Home Assistant without uploading it to the thermostat.
+  fields:
+    profile:
+      name: Profile
+      required: true
+      selector:
+        select:
+          options:
+            - home_heat
+            - away_heat
+            - home_cool
+            - away_cool
+    program:
+      name: Weekly program
+      required: true
+      selector:
+        object:
+activate_profile:
+  name: Activate profile
+  description: Upload both the selected profile's heat and cool programs, then read them back to verify. A partial failure is possible because the thermostat has separate endpoints.
+  fields:
+    profile:
+      name: Profile
+      required: true
+      selector:
+        select:
+          options:
+            - home
+            - away
